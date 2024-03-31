@@ -7,7 +7,30 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Etch-a-Sketch</h1>
+        <img src="./images/sun-up.png" alt="sun up">
+    </header>
+    <main>
+        <div class="settings">
+            <ul class="mode">
+                <li><input type="color"></li>
+                <li><button>rainbow</button></li>
+                <li><button>eraser</button></li>
+            </ul>
+
+            <form action="grid-size">10 x 10</form>
+            <input type="range" id="grid-size" min="1" max="100">
+
+            <button>grid-lines</button>
+            <button>clear</button>
+        </div>
+        <div class="container">
+        </div>
+    </main>
+    <footer>
+        <h3>designed by: weagret</h3>
+    </footer>
     <script src="./js/script.js"></script>
 </body>
 </html>
