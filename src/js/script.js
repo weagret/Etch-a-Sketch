@@ -143,7 +143,6 @@ function addEventListenerForGrid() {
         e.addEventListener("mouseup", () => {
             currentEvent = "mouseup";
         });
-        e.addEventListener("click", drawingEvents(e));
     });
 }
 function main() {
