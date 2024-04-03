@@ -134,6 +134,7 @@ function addEventListenerForGrid() {
     elems.forEach((e) => {
         e.addEventListener("mousedown", () => {
             currentEvent = "mousedown";
+            drawingEvents(e);
         });
         e.addEventListener("mousemove", () => {
             if (currentEvent == "mousedown") {
