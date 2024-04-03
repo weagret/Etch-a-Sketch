@@ -133,16 +133,17 @@ function addEventListenerForGrid() {
     let elems = document.querySelectorAll(".elem");
     elems.forEach((e) => {
         e.addEventListener("mousedown", () => {
-            currentEvent = "mousedown"
-        })
+            currentEvent = "mousedown";
+        });
         e.addEventListener("mousemove", () => {
             if (currentEvent == "mousedown") {
                 drawingEvents(e);
             }
-        })
+        });
         e.addEventListener("mouseup", () => {
             currentEvent = "mouseup";
-        })
+        });
+        e.addEventListener("click", drawingEvents(e));
     });
 }
 function main() {
