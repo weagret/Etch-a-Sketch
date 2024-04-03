@@ -12,12 +12,13 @@
     </header>
     <main>
         <div class="settings">
-            <input type="color">
+            <input type="color" value="#000000">
+            <button>color</button>
             <button>rainbow</button>
             <button>eraser</button>
 
-            <form action="grid-size">50 x 50</form>
-            <input type="range" id="grid-size" min="1" max="100">
+            <p>25 X 25</p>
+            <input type="range" min="1" max="50" value="25" onchange="updateRangeInputText()">
 
             <button>grid-lines</button>
             <button>clear</button>
