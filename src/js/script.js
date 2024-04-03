@@ -8,7 +8,7 @@ let drawingMode = "color";
 const defaultBtnColor = "#202020";
 const selectedBtnColor = "#808080";
 let gridLineBtnSelected = false;
-
+let currentEvent = "";
 
 function makeGrid(size) {
     let container = document.querySelector(".container");
@@ -101,10 +101,55 @@ function updateRangeInput() {
     updateRangeInputText(rangeInput);
     makeGrid(rangeInput.value);
     addOrRemoveGridLines();
+    addEventListenerForGrid();
+}
+
+function makeWhiteGridElem(e) {
+    e.style.backgroundColor = "white";
+}
+function makeColorGridElem(e) {
+    let inputColor = document.querySelector("input[type=color]");
+    e.style.backgroundColor = inputColor.value;
+}
+function randomNumber(max) {
+    // from 0 to max-1
+    return Math.floor(Math.random() * max);
+}
+function makeRainbowGridElem(e) {
+    let randomR = randomNumber(256);
+    let randomG = randomNumber(256);
+    let randomB = randomNumber(256);
+
+    e.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+}
+function drawingEvents(e) {
+    switch (drawingMode) {
+        case "color": makeColorGridElem(e); break;
+        case "rainbow": makeRainbowGridElem(e); break;
+        case "eraser": makeWhiteGridElem(e);
+    };
+}
+function addEventListenerForGrid() {
+    let elems = document.querySelectorAll(".elem");
+    elems.forEach((e) => {
+        e.addEventListener("mousedown", () => {
+            currentEvent = "mousedown"
+        })
+        e.addEventListener("mousemove", () => {
+            if (currentEvent == "mousedown") {
+                drawingEvents(e);
+            }
+        })
+        e.addEventListener("mouseup", () => {
+            currentEvent = "mouseup";
+        })
+    });
 }
 function main() {
     makeGrid(document.querySelector("input[type=range]").value);
+    addBtnSelectedStyles(document.querySelector("button"));
     addEventListenerForBtns();
+    addEventListenerForGrid();
 }
 
 main();
